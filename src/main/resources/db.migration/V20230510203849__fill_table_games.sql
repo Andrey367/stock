@@ -1,4 +1,4 @@
-INSERT INTO games (name, game_console, description, preview_link)
+INSERT INTO games (name, games_console, description, preview_link)
 VALUES
 ('Ведьмак 3: Дикая Охота','PlayStation 4' ,'The Witcher 3: Wild Hunt — мультиплатформенная компьютерная ролевая игра с открытым миром, разработанная польской студией CD Projekt RED.', 'https://www.igromania.ru/game/14931/Vedmak_3_Dikaya_Ohota.html'),
 ('The Last of Us Part II','PlayStation 4' ,'The Last of Us Part II — компьютерная игра в жанре survival horror с элементами action и adventure, разработанная американской студией Naughty Dog.', 'https://www.igromania.ru/article/30927/The_Last_of_Us_Part_II_obzor_igry.html'),
