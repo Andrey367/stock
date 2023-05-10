@@ -14,17 +14,12 @@
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Жанры</h1>
-    <table>
-        <tr th:each="genre: ${genres}">
-            <td th:text="${genre.id}" />
-            <td th:text="${genre.name}" />
-            <td th:text="${genre.description}" />
-            <td><a th:href="@{/genre/{id}(id=${genre.id})}" type="button" class="btn btn-primary">Редактировать</a></td>
-            <td><a th:href="@{/genre/delete/{id}(id=${genre.id})}" type="button" class="btn btn-primary">Удалить</a></td>
-        </tr>
-    </table>
-
-    <!-- Использование Thymeleaf для динамического изменения содержания кнопки -->
+    <form action="#" th:action="@{/genre}" th:object="${genre}" th:method="POST">
+        <input type="text" th:field="*{id}" readonly/>
+        <input type="text" th:field="*{name}" />
+        <input type="text" th:field="*{description}">
+        <button type="submit">Сохранить</button>
+    </form>
 
 </div>
 
