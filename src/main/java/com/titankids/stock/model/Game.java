@@ -11,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "games", schema = "game_shop" )
-public class Games {
+public class Game {
 
     @GenericGenerator(
             name = "games_generator",
@@ -29,9 +29,6 @@ public class Games {
 
     private String name;
 
-    private String games_console;
-
     private String description;
 
-    private String preview_link;
 }
