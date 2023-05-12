@@ -14,7 +14,7 @@
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Игры</h1>
-    <table>
+    <table class="table table-responsive">
         <tr th:each="game: ${games}">
             <td th:text="${game.id}"/>
             <td th:text="${game.name}"/>
