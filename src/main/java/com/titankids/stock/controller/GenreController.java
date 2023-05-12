@@ -18,20 +18,20 @@ public class GenreController {
     private GenreRepository genreRepository;
 
     @GetMapping(path = "/list")
-    public String getAllGenres(Model model) {
+    public String getAllGenre(Model model) {
         addAttributes(model, genreRepository.findAll());
         return "genre-list";
     }
 
     @GetMapping(path = "/{id}")
-    public String getGenreById(@PathVariable Long id, Model model) {
+    public String getById(@PathVariable Long id, Model model) {
         model.addAttribute("genre", genreRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException(String.format("Genre with id %d not found", id))));
         return "genre";
     }
 
     @PostMapping()
-    public String updateGenre(@ModelAttribute Genre genre, Model model) {
+    public String update(@ModelAttribute Genre genre, Model model) {
         model.addAttribute("genre", genreRepository.save(genre));
         return "redirect:/genre/list";
     }
@@ -42,7 +42,7 @@ public class GenreController {
         return "redirect:/genre/list";
     }
 
-    private void addAttributes(Model model, List<Genre> genres) {
-        model.addAttribute("genres", genres);
+    private void addAttributes(Model model, List<Genre> genre) {
+        model.addAttribute("genre", genre);
     }
 }
