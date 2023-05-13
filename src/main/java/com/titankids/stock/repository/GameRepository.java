@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface GameRepository extends JpaRepository<Game, Long> {
     Game findByName(String name);
     Game findByDescription(String description);
+    Game findByPrice (Double price);
 }

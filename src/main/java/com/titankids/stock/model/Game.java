@@ -31,4 +31,6 @@ public class Game {
 
     private String description;
 
+    private  Double price;
+
 }
