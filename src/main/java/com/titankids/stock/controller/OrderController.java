@@ -1,8 +1,13 @@
 package com.titankids.stock.controller;
 
 
+import com.titankids.stock.model.Client;
+import com.titankids.stock.model.Game;
 import com.titankids.stock.model.Order;
+import com.titankids.stock.repository.ClientRepository;
+import com.titankids.stock.repository.GameRepository;
 import com.titankids.stock.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +16,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/order")
 public class OrderController {
 
-    @Autowired
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
+    private final GameRepository gameRepository;
+    private final ClientRepository clientRepository;
 
     @GetMapping(path = "/list")
     public String getAllOrder(Model model) {
@@ -45,5 +52,16 @@ public class OrderController {
     private void addAttributes(Model model, List<Order> order) {
         model.addAttribute("order", order);
     }
+
+    @ModelAttribute("games")
+    public List<Game> initializeGames() {
+        return gameRepository.findAll();
+    }
+
+    @ModelAttribute("clients")
+    public List<Client> initializeClients() {
+        return clientRepository.findAll();
+    }
+
 }
 

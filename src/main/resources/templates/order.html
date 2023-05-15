@@ -18,14 +18,12 @@
     <form action="#" th:action="@{/order}" th:object="${order}" th:method="POST">
         <input type="text" th:field="*{id}" readonly/>
         <input type="text" th:field="*{createdAt}" />
-        <input type="text" th:field="*{client.id}" readonly>
-        <input type="text" th:field="*{client.name}" readonly>
-        <input type="text" th:field="*{client.email}" readonly>
-        <input type="text" th:field="*{client.telephone}" readonly>
-        <input type="text" th:field="*{game.id}" readonly>
-        <input type="text" th:field="*{game.name}" readonly>
-        <input type="text" th:field="*{game.description}" readonly>
-        <input type="text" th:field="*{game.price}" readonly>
+        <select th:field="${order.client}" class="form-control" id="client">
+            <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.name}" th:selected="${client.id == order.client.id}"></option>
+        </select>
+        <select th:field="${order.game}" class="form-control" id="game">
+            <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}" th:selected="${game.id == order.game.id}"></option>
+        </select>
         <input type="text" th:field="*{comment}">
         <button type="submit">Сохранить</button>
     </form>
