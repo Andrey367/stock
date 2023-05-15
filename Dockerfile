@@ -1,4 +1,4 @@
-FROM maven:3.8.3-openjdk-19 AS build
+FROM maven:3.9.1-amazoncorretto-20 AS build
 
 RUN mkdir /stock-service
 
