@@ -14,6 +14,7 @@
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Игры</h1>
+    <a style="float: right" href="/game/create" type="button" class="btn btn-success m-1 float-md-right">Добавить игру</a>
     <table class="table table-responsive">
         <tr th:each="game: ${games}">
             <td th:text="${game.id}"/>

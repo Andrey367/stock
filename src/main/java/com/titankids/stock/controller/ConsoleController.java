@@ -2,6 +2,7 @@ package com.titankids.stock.controller;
 
 
 import com.titankids.stock.model.Console;
+import com.titankids.stock.model.Order;
 import com.titankids.stock.repository.ConsoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,11 @@ public class   ConsoleController {
         consoleRepository.deleteById(id);
         return "redirect:/console/list";
     }
-
+    @GetMapping(path = "/create")
+    public String deleteById(Model model) {
+        model.addAttribute("console", new Console());
+        return "console";
+    }
     private void addAttributes(Model model, List<Console> console) {
         model.addAttribute("console", console);
     }

@@ -2,6 +2,7 @@ package com.titankids.stock.controller;
 
 
 import com.titankids.stock.model.Genre;
+import com.titankids.stock.model.Order;
 import com.titankids.stock.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,6 +41,12 @@ public class GenreController {
     public String deleteById(@PathVariable Long id, Model model) {
         genreRepository.deleteById(id);
         return "redirect:/genre/list";
+    }
+
+    @GetMapping(path = "/create")
+    public String deleteById(Model model) {
+        model.addAttribute("genre", new Genre());
+        return "genre";
     }
 
     private void addAttributes(Model model, List<Genre> genre) {

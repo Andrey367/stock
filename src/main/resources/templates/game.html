@@ -15,10 +15,36 @@
 <div class="container mt-5">
     <h1 class="text-center mb-4">Игры</h1>
     <form action="#" th:action="@{/game}" th:object="${game}" th:method="POST">
-        <input type="text" th:field="*{id}" readonly/>
-        <input type="text" th:field="*{name}" />
-        <input type="text" th:field="*{description}">
-        <input type="text" th:field="*{price}">
+        <div class="container-fluid">
+            <label class="m-1" for="id">ID</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <input class="form-control form-control-xs" type="text"
+                           th:field="*{id}" id="id" readonly>
+                </div>
+            </div>
+            <label class="m-1" for="name">Название</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <input class="form-control form-control-xs" type="text"
+                           th:field="*{name}" id="name">
+                </div>
+            </div>
+            <label class="m-1" for="description">Описание</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <input class="form-control form-control-xs" type="text"
+                           th:field="*{description}" id="description">
+                </div>
+            </div>
+            <label class="m-1" for="price">Цена</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <input class="form-control form-control-xs" type="text"
+                           th:field="*{price}" id="price">
+                </div>
+            </div>
+        </div>
         <button type="submit" class="btn btn-success">Сохранить</button>
     </form>
 

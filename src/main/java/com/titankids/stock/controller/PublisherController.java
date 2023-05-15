@@ -1,6 +1,7 @@
 package com.titankids.stock.controller;
 
 
+import com.titankids.stock.model.Order;
 import com.titankids.stock.model.Publisher;
 import com.titankids.stock.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,12 @@ public class PublisherController {
     public String deleteById(@PathVariable Long id, Model model) {
         publisherRepository.deleteById(id);
         return "redirect:/publisher/list";
+    }
+
+    @GetMapping(path = "/create")
+    public String deleteById(Model model) {
+        model.addAttribute("publisher", new Publisher());
+        return "publisher";
     }
 
     private void addAttributes(Model model, List<Publisher> publisher) {

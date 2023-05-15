@@ -2,6 +2,7 @@ package com.titankids.stock.controller;
 
 
 import com.titankids.stock.model.Client;
+import com.titankids.stock.model.Order;
 import com.titankids.stock.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,6 +41,11 @@ public class ClientController {
     public String deleteById(@PathVariable Long id, Model model) {
         clientRepository.deleteById(id);
         return "redirect:/client/list";
+    }
+    @GetMapping(path = "/create")
+    public String deleteById(Model model) {
+        model.addAttribute("client", new Client());
+        return "client";
     }
 
     private void addAttributes(Model model, List<Client> client) {

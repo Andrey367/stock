@@ -16,9 +16,29 @@
 <div class="container mt-5">
     <h1 class="text-center mb-4">Жанры</h1>
     <form action="#" th:action="@{/genre}" th:object="${genre}" th:method="POST">
-        <input type="text" th:field="*{id}" readonly/>
-        <input type="text" th:field="*{name}" />
-        <input type="text" th:field="*{description}">
+        <div class="container-fluid">
+            <label class="m-1" for="id">ID</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <input class="form-control form-control-xs" type="text"
+                           th:field="*{id}" id="id" readonly>
+                </div>
+            </div>
+            <label class="m-1" for="name">Название</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <input class="form-control form-control-xs" type="text"
+                           th:field="*{name}" id="name">
+                </div>
+            </div>
+            <label class="m-1" for="description">Описание</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <input class="form-control form-control-xs" type="text"
+                           th:field="*{description}" id="description">
+                </div>
+            </div>
+        </div>
         <button type="submit">Сохранить</button>
     </form>
 

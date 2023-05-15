@@ -3,6 +3,7 @@ package com.titankids.stock.controller;
 
 import com.titankids.stock.model.Game;
 import com.titankids.stock.model.Genre;
+import com.titankids.stock.model.Order;
 import com.titankids.stock.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,12 @@ public class GameController {
     public String deleteById(@PathVariable Long id, Model model) {
         gameRepository.deleteById(id);
         return "redirect:/game/list";
+    }
+
+    @GetMapping(path = "/create")
+    public String deleteById(Model model) {
+        model.addAttribute("game", new Game());
+        return "game";
     }
 
     private void addAttributes(Model model, List<Game> games) {

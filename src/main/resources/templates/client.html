@@ -15,13 +15,29 @@
 <div class="container mt-5">
   <h1 class="text-center mb-4">Клиенты</h1>
   <form action="#" th:action="@{/client}" th:object="${client}" th:method="POST">
-    <input type="text" th:field="*{id}" readonly/>
-    <input type="text" th:field="*{name}" />
-    <input type="text" th:field="*{telephone}">
-    <input type="text" th:field="*{email}">
+    <div class="container-fluid">
+      <label class="m-1" for="name">Имя</label>
+      <div class="row">
+        <div class="col-xs-12 col-md-12 mt-1">
+          <input class="form-control form-control-xs" type="text"
+                 th:field="*{name}" id="name">
+        </div>
+        <div class="container-fluid">
+          <label class="m-1" for="telephone">Номер телефона</label>
+          <div class="row">
+            <div class="col-xs-12 col-md-12 mt-1">
+              <input class="form-control form-control-xs" type="text"
+                     th:field="*{telephone}" id="telephone">
+            </div>
+            <div class="container-fluid">
+              <label class="m-1" for="Email">Email</label>
+              <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                  <input class="form-control form-control-xs" type="text"
+                         th:field="*{email}" id="email">
+                </div>
     <button type="submit" class="btn btn-success">Сохранить</button>
   </form>
-
 </div>
 
 <!-- Подлючение скриптов Bootstrap и jQuery -->
