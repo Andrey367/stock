@@ -18,8 +18,14 @@
     <form action="#" th:action="@{/order}" th:object="${order}" th:method="POST">
         <input type="text" th:field="*{id}" readonly/>
         <input type="text" th:field="*{createdAt}" />
-        <input type="text" th:field="*{clientId}">
-        <input type="text" th:field="*{gameId}">
+        <input type="text" th:field="*{client.id}" readonly>
+        <input type="text" th:field="*{client.name}" readonly>
+        <input type="text" th:field="*{client.email}" readonly>
+        <input type="text" th:field="*{client.telephone}" readonly>
+        <input type="text" th:field="*{game.id}" readonly>
+        <input type="text" th:field="*{game.name}" readonly>
+        <input type="text" th:field="*{game.description}" readonly>
+        <input type="text" th:field="*{game.price}" readonly>
         <input type="text" th:field="*{comment}">
         <button type="submit">Сохранить</button>
     </form>
