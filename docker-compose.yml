@@ -1,0 +1,26 @@
+version: "3.3"
+services:
+
+  api:
+    container_name: stock-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=${POSTGRES_URL}
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+      - "443:443"
+    restart: always
+    networks:
+      - stock-service-network
+
+networks:
+  stock-service-network:
+    driver: bridge
