@@ -15,17 +15,17 @@
 <div class="container mt-5">
     <div class="container">
         <h1 class="text-center mb-4">Заказы</h1>
-        <a th:href="@{/order/create}" type="button" class="btn btn-success m-1">Создать заказ</a>
     </div>
+    <a style="float: right" th:href="@{/order/create}" type="button" class="btn btn-success m-1 float-md-right">Создать заказ</a>
     <table class="table table-responsive">
         <tr th:each="order: ${order}">
             <td th:text="${order.id}"/>
-            <td th:text="${order.createdAt}"/>
+            <td th:text="${#temporals.format(order.createdAt, 'dd.MM.yyyy HH:mm')}"/>
             <td th:text="${order.client.name}"/>
             <td th:text="${order.game.name}"/>
             <td th:text="${order.comment}"/>
-            <td><a th:href="@{/order/{id}(id=${order.id})}" type="button" class="btn btn-primary">Редактировать</a></td>
-            <td><a th:href="@{/order/delete/{id}(id=${order.id})}" type="button" class="btn btn-danger">Удалить</a></td>
+            <td class="col-md-1"><a th:href="@{/order/{id}(id=${order.id})}" type="button" class="btn btn-primary">Редактировать</a></td>
+            <td class="col-md-1"><a th:href="@{/order/delete/{id}(id=${order.id})}" type="button" class="btn btn-danger">Удалить</a></td>
         </tr>
     </table>
 </div>

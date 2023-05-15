@@ -26,7 +26,7 @@ public class OrderController {
 
     @GetMapping(path = "/list")
     public String getAllOrder(Model model) {
-        addAttributes(model, orderRepository.findAll());
+        addAttributes(model, orderRepository.findAllOrderByCreatedAt());
         return "order-list";
     }
 
