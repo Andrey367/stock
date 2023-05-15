@@ -18,8 +18,8 @@
         <tr th:each="order: ${order}">
             <td th:text="${order.id}"/>
             <td th:text="${order.createdAt}"/>
-            <td th:text="${order.clientId}"/>
-            <td th:text="${order.gameId}"/>
+            <td th:text="${order.client.name}"/>
+            <td th:text="${order.game.name}"/>
             <td th:text="${order.comment}"/>
             <td><a th:href="@{/order/{id}(id=${order.id})}" type="button" class="btn btn-primary">Редактировать</a></td>
             <td><a th:href="@{/order/delete/{id}(id=${order.id})}" type="button" class="btn btn-danger">Удалить</a></td>

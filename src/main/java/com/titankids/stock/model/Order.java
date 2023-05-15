@@ -7,6 +7,7 @@ package com.titankids.stock.model;
         import org.hibernate.annotations.GenericGenerator;
 
         import java.time.LocalDateTime;
+        import java.util.List;
 
 @Data
 @Entity
@@ -32,11 +33,11 @@ public class Order {
     @Column(name="created_at")
     private LocalDateTime createdAt;
 
-    @Column (name ="client_id")
-    private Long clientId;
+    @ManyToOne
+    private Client client;
 
-    @Column(name="game_id")
-    private Long gameId;
+    @ManyToOne
+    private Game game;
 
     private String comment;
 }
