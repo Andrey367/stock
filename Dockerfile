@@ -10,6 +10,6 @@ RUN mvn clean package
 
 FROM openjdk:latest
 
-COPY --from=build /stock-service/target/stock-service-1.0.jar /stock-service.jar
+COPY --from=build /stock/target/stock-1.0.jar /stock-service.jar
 
 CMD java $JAVA_OPTS -jar stock-service.jar
