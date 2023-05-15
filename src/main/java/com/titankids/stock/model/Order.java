@@ -31,7 +31,7 @@ public class Order {
     private Long id;
 
     @Column(name="created_at")
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @ManyToOne
     private Client client;

@@ -49,6 +49,12 @@ public class OrderController {
         return "redirect:/order/list";
     }
 
+    @GetMapping(path = "/create")
+    public String deleteById(Model model) {
+        model.addAttribute("order", new Order());
+        return "order";
+    }
+
     private void addAttributes(Model model, List<Order> order) {
         model.addAttribute("order", order);
     }
