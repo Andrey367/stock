@@ -16,11 +16,11 @@
     <h1 class="text-center mb-4">Игры</h1>
     <form action="#" th:action="@{/game}" th:object="${game}" th:method="POST">
         <div class="container-fluid">
-            <label class="m-1" for="id">ID</label>
+            <label class="m-1" for="id" hidden="hidden">ID</label>
             <div class="row">
                 <div class="col-xs-12 col-md-12 mt-1">
                     <input class="form-control form-control-xs" type="text"
-                           th:field="*{id}" id="id" readonly>
+                           th:field="*{id}" id="id" readonly hidden="hidden">
                 </div>
             </div>
             <label class="m-1" for="name">Название</label>
@@ -45,7 +45,13 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success">Сохранить</button>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <button type="submit" class="btn btn-success form-control  mt-1">Сохранить</button>
+                </div>
+            </div>
+        </div>
     </form>
 
 </div>

@@ -44,7 +44,7 @@ public class PublisherController {
     }
 
     @GetMapping(path = "/create")
-    public String deleteById(Model model) {
+    public String create(Model model) {
         model.addAttribute("publisher", new Publisher());
         return "publisher";
     }

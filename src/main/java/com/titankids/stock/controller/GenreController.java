@@ -44,7 +44,7 @@ public class GenreController {
     }
 
     @GetMapping(path = "/create")
-    public String deleteById(Model model) {
+    public String create(Model model) {
         model.addAttribute("genre", new Genre());
         return "genre";
     }

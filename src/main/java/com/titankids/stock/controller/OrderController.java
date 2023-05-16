@@ -50,7 +50,7 @@ public class OrderController {
     }
 
     @GetMapping(path = "/create")
-    public String deleteById(Model model) {
+    public String create(Model model) {
         model.addAttribute("order", new Order());
         return "order";
     }

@@ -43,7 +43,7 @@ public class ClientController {
         return "redirect:/client/list";
     }
     @GetMapping(path = "/create")
-    public String deleteById(Model model) {
+    public String create(Model model) {
         model.addAttribute("client", new Client());
         return "client";
     }

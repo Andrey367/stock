@@ -43,7 +43,7 @@ public class   ConsoleController {
         return "redirect:/console/list";
     }
     @GetMapping(path = "/create")
-    public String deleteById(Model model) {
+    public String create(Model model) {
         model.addAttribute("console", new Console());
         return "console";
     }
