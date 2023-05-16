@@ -10,8 +10,8 @@
     <title>Игры</title>
 </head>
 
-<body>
-
+<body style="padding-top: 40px">
+<div th:replace="~{fragments/header.html :: #header}"></div>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Игры</h1>
     <form action="#" th:action="@{/game}" th:object="${game}" th:method="POST">

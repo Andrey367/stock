@@ -10,9 +10,8 @@
     <title>Консоль</title>
 </head>
 
-<body>
-
-<div class="container mt-5">
+<body style="padding-top: 40px">
+<div th:replace="~{fragments/header.html :: #header}"></div><div class="container mt-5">
     <h1 class="text-center mb-4">Консоли</h1>
     <form action="#" th:action="@{/console}" th:object="${console}" th:method="POST">
         <div class="container-fluid">

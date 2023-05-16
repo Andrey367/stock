@@ -11,8 +11,8 @@
     <title>Издатели</title>
 </head>
 
-<body>
-
+<body style="padding-top: 40px">
+<div th:replace="~{fragments/header.html :: #header}"></div>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Издатели</h1>
     <form action="#" th:action="@{/publisher}" th:object="${publisher}" th:method="POST">

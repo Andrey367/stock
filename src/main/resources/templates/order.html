@@ -11,8 +11,8 @@
     <title>Заказы</title>
 </head>
 
-<body>
-
+<body style="padding-top: 40px">
+<div th:replace="~{fragments/header.html :: #header}"></div>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Заказы</h1>
     <form action="#" th:action="@{/order}" th:object="${order}" th:method="POST" class="">
