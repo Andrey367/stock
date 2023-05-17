@@ -20,12 +20,24 @@
 
     <a style="float: right" th:href="@{/order/create}" type="button" class="btn btn-success m-1 float-md-right">Создать заказ</a>
     <table class="table table-responsive">
-        <tr th:each="order: ${order}">
+        <thead style="font-weight: bold">
+        <tr style="text-align: center">
+            <td>Номер</td>
+            <td>Дата заказа</td>
+            <td>Телефон</td>
+            <td>Название игры</td>
+            <td>Комментарий</td>
+            <td>Сумма заказа</td>
+            <td colspan="2">Действия</td>
+        </tr>
+        </thead>
+        <tr style="text-align: center" th:each="order: ${order}">
             <td th:text="${order.id}"/>
             <td th:text="${#temporals.format(order.createdAt, 'dd.MM.yyyy HH:mm')}"/>
-            <td th:text="${order.client.name}"/>
+            <td th:text="${order.client.telephone}"/>
             <td th:text="${order.game.name}"/>
             <td th:text="${order.comment}"/>
+            <td th:text="${#numbers.formatCurrency(order.game.price)}"/>
             <td class="col-md-1"><a th:href="@{/order/{id}(id=${order.id})}" type="button" class="btn btn-primary">Редактировать</a></td>
             <td class="col-md-1"><a th:href="@{/order/delete/{id}(id=${order.id})}" type="button" class="btn btn-danger">Удалить</a></td>
         </tr>

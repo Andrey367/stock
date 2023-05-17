@@ -16,6 +16,14 @@
     <h1 class="text-center mb-4">Консоли</h1>
     <a style="float: right" href="/console/create" type="button" class="btn btn-success m-1 float-md-right">Добавить консоли</a>
     <table class="table table-responsive">
+        <thead style="font-weight: bold">
+        <tr style="text-align: center">
+            <td>ID</td>
+            <td>Название</td>
+            <td>Описание</td>
+            <td colspan="2">Действия</td>
+        </tr>
+        </thead>
         <tr th:each="console: ${console}">
             <td th:text="${console.id}"/>
             <td th:text="${console.name}"/>

@@ -16,7 +16,16 @@
     <h1 class="text-center mb-4">Клиенты</h1>
     <a style="float: right" href="/client/create" type="button" class="btn btn-success m-1 float-md-right">Добавить клиента</a>
     <table class="table table-responsive">
-        <tr th:each="client: ${client}">
+        <thead style="font-weight: bold">
+        <tr style="text-align: center">
+            <td>ID</td>
+            <td>Имя</td>
+            <td>Телефон</td>
+            <td>E-mail</td>
+            <td colspan="2">Действия</td>
+        </tr>
+        </thead>
+        <tr style="text-align: center" th:each="client: ${client}">
             <td th:text="${client.id}"/>
             <td th:text="${client.name}"/>
             <td th:text="${client.telephone}"/>

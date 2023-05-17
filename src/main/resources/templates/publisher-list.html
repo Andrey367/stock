@@ -16,6 +16,14 @@
     <h1 class="text-center mb-4">Издатели</h1>
     <a style="float: right" href="/publisher/create" type="button" class="btn btn-success m-1 float-md-right">Добавить издателя</a>
     <table class="table table-responsive">
+        <thead style="font-weight: bold">
+        <tr style="text-align: center">
+            <td>ID</td>
+            <td>Название</td>
+            <td>Описание</td>
+            <td colspan="2">Действия</td>
+        </tr>
+        </thead>
         <tr th:each="publisher: ${publisher}">
             <td th:text="${publisher.id}"/>
             <td th:text="${publisher.name}"/>
