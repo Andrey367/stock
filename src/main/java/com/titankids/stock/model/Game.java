@@ -31,6 +31,11 @@ public class Game {
 
     private String description;
 
-    private  Double price;
+    private Double price;
+
+    private boolean changeable;
+
+    @Column(name = "change_price")
+    private Double changePrice;
 
 }

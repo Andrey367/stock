@@ -16,11 +16,24 @@
     <h1 class="text-center mb-4">Игры</h1>
     <a style="float: right" href="/game/create" type="button" class="btn btn-success m-1 float-md-right">Добавить игру</a>
     <table class="table table-responsive">
+        <thead style="font-weight: bold">
+            <tr style="text-align: center">
+                <td>ID</td>
+                <td>Название</td>
+                <td>Описание</td>
+                <td>Цена продажи</td>
+                <td>Возможен обмен</td>
+                <td>Цена обмена</td>
+                <td colspan="2">Действия</td>
+            </tr>
+        </thead>
         <tr th:each="game: ${games}">
             <td th:text="${game.id}"/>
             <td th:text="${game.name}"/>
             <td th:text="${game.description}"/>
-            <td th:text="${game.price}"/>
+            <td style="text-align: center" th:text="${#numbers.formatCurrency(game.price)}"/>
+            <td style="text-align: center" th:text="${game.changeable ? 'Да' : 'Нет'}"/>
+            <td style="text-align: center" th:text="${#numbers.formatCurrency(game.changePrice)}"/>
             <td><a th:href="@{/game/{id}(id=${game.id})}" type="button" class="btn btn-primary">Редактировать</a></td>
             <td><a th:href="@{/game/delete/{id}(id=${game.id})}" type="button" class="btn btn-danger">Удалить</a></td>
         </tr>
