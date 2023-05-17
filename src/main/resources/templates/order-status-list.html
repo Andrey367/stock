@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Подлючение стилей Bootstrap -->
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Статусы заказов</title>
+</head>
+
+<body style="padding-top: 40px">
+<div th:replace="~{fragments/header.html :: #header}"></div>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Статусы заказов</h1>
+    <a style="float: right" th:href="@{/order/status/create}" type="button" class="btn btn-success m-1 float-md-right">Добавить статус заказа</a>
+    <table class="table table-responsive">
+        <thead style="font-weight: bold">
+        <tr style="text-align: center">
+            <td>ID</td>
+            <td>Название</td>
+            <td>Описание</td>
+            <td colspan="2">Действия</td>
+        </tr>
+        </thead>
+        <tr th:each="status: ${statuses}">
+            <td th:text="${status.id}"/>
+            <td th:text="${status.name}"/>
+            <td th:text="${status.description}"/>
+            <td><a th:href="@{/order/status/{id}(id=${status.id})}" type="button" class="btn btn-primary">Редактировать</a></td>
+            <td><a th:href="@{/order/status/delete/{id}(id=${status.id})}" type="button" class="btn btn-danger">Удалить</a></td>
+        </tr>
+    </table>
+</div>
+
+<!-- Подлючение скриптов Bootstrap и jQuery -->
+<script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js}"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
