@@ -5,6 +5,8 @@ import com.titankids.stock.model.Game;
 import com.titankids.stock.model.Genre;
 import com.titankids.stock.model.Order;
 import com.titankids.stock.repository.GameRepository;
+import com.titankids.stock.repository.GenreRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +16,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/game")
+@RequiredArgsConstructor
 public class GameController {
 
-    @Autowired
-    private GameRepository gameRepository;
+    private final GameRepository gameRepository;
+    private final GenreRepository genreRepository;
 
     @GetMapping(path = "/list")
     public String getAllGames(Model model) {
@@ -52,5 +55,10 @@ public class GameController {
 
     private void addAttributes(Model model, List<Game> games) {
         model.addAttribute("games", games);
+    }
+
+    @ModelAttribute("genres")
+    public List<Genre> initializeGenres() {
+        return genreRepository.findAll();
     }
 }

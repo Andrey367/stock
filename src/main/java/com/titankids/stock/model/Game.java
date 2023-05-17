@@ -38,4 +38,7 @@ public class Game {
     @Column(name = "change_price")
     private Double changePrice;
 
+    @OneToOne
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
 }
