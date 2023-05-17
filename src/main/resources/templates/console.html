@@ -11,7 +11,8 @@
 </head>
 
 <body style="padding-top: 40px">
-<div th:replace="~{fragments/header.html :: #header}"></div><div class="container mt-5">
+<div th:replace="~{fragments/header.html :: #header}"></div>
+<div class="container mt-5">
     <h1 class="text-center mb-4">Консоли</h1>
     <form action="#" th:action="@{/console}" th:object="${console}" th:method="POST">
         <div class="container-fluid">
@@ -22,6 +23,7 @@
                            th:field="*{id}" id="id" readonly>
                 </div>
             </div>
+        </div>
         <div class="container-fluid">
             <label class="m-1" for="Name">Название</label>
             <div class="row">
@@ -29,14 +31,27 @@
                     <input class="form-control form-control-xs" type="text"
                            th:field="*{name}" id="name">
                 </div>
-                <div class="container-fluid">
-                    <label class="m-1" for="Description">Описание</label>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 mt-1">
-                            <input class="form-control form-control-xs" type="text"
-                                   th:field="*{description}" id="description">
-                        </div>
-        <button type="submit">Сохранить</button>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <label class="m-1" for="Description">Описание</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <input class="form-control form-control-xs" type="text"
+                           th:field="*{description}" id="description">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-md-6 mt-1">
+                    <button type="submit" class="btn btn-success form-control mt-1">Сохранить</button>
+                </div>
+                <div class="col-xs-6 col-md-6 mt-1">
+                    <a th:href="@{/console/list}" type="button" class="btn btn-danger form-control mt-1">Отменить</a>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 
