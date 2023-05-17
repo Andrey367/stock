@@ -50,4 +50,6 @@ public class Order {
     private OrderType type;
 
     private Double price;
+
+    private int amount = 1;
 }
