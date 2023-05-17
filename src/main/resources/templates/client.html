@@ -16,6 +16,15 @@
     <h1 class="text-center mb-4">Клиенты</h1>
     <form action="#" th:action="@{/client}" th:object="${client}" th:method="POST">
         <div class="container-fluid">
+            <label class="m-1" for="id" hidden="hidden">ID</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 mt-1">
+                    <input class="form-control form-control-xs" type="text"
+                           th:field="*{id}" id="id" readonly hidden="hidden">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
             <label class="m-1" for="name">Имя</label>
             <div class="row">
                 <div class="col-xs-12 col-md-12 mt-1">

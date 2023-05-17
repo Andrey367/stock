@@ -1,12 +1,8 @@
 package com.titankids.stock.controller;
 
 
-import com.titankids.stock.model.Client;
-import com.titankids.stock.model.Game;
-import com.titankids.stock.model.Order;
-import com.titankids.stock.repository.ClientRepository;
-import com.titankids.stock.repository.GameRepository;
-import com.titankids.stock.repository.OrderRepository;
+import com.titankids.stock.model.*;
+import com.titankids.stock.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +19,8 @@ public class OrderController {
     private final OrderRepository orderRepository;
     private final GameRepository gameRepository;
     private final ClientRepository clientRepository;
+    private final OrderTypeRepository orderTypeRepository;
+    private final OrderStatusRepository orderStatusRepository;
 
     @GetMapping(path = "/list")
     public String getAllOrder(Model model) {
@@ -67,6 +65,16 @@ public class OrderController {
     @ModelAttribute("clients")
     public List<Client> initializeClients() {
         return clientRepository.findAll();
+    }
+
+    @ModelAttribute("types")
+    public List<OrderType> initializeTypes() {
+        return orderTypeRepository.findAll();
+    }
+
+    @ModelAttribute("statuses")
+    public List<OrderStatus> initializeStatuses() {
+        return orderStatusRepository.findAll();
     }
 
 }

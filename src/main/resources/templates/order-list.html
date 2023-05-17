@@ -27,7 +27,9 @@
             <td>Телефон</td>
             <td>Название игры</td>
             <td>Комментарий</td>
-            <td>Сумма заказа</td>
+            <td>Сумма</td>
+            <td>Статус</td>
+            <td>Тип</td>
             <td colspan="2">Действия</td>
         </tr>
         </thead>
@@ -37,7 +39,9 @@
             <td th:text="${order.client.telephone}"/>
             <td th:text="${order.game.name}"/>
             <td th:text="${order.comment}"/>
-            <td th:text="${#numbers.formatCurrency(order.game.price)}"/>
+            <td th:text="${#numbers.formatCurrency(order.price)}"/>
+            <td th:text="${order.status?.name}"/>
+            <td th:text="${order.type?.name}"/>
             <td class="col-md-1"><a th:href="@{/order/{id}(id=${order.id})}" type="button" class="btn btn-primary">Редактировать</a></td>
             <td class="col-md-1"><a th:href="@{/order/delete/{id}(id=${order.id})}" type="button" class="btn btn-danger">Удалить</a></td>
         </tr>

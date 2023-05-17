@@ -40,4 +40,14 @@ public class Order {
     private Game game;
 
     private String comment;
+
+    @ManyToOne
+    @JoinColumn(name = "order_status_id")
+    private OrderStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "order_type_id")
+    private OrderType type;
+
+    private Double price;
 }

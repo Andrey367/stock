@@ -64,6 +64,47 @@
             </div>
         </div>
         <div class="container-fluid">
+            <label class="m-1" for="price">Стоимость</label>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <input class="form-control  m-1" type="text"
+                           th:field="*{price}" id="price"/>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <label class="m-1" for="type">Тип заказа</label>
+            <div class="row">
+                <div class="col-xs-10 col-md-10 mt-1">
+                    <select th:field="${order.type}" class="form-control m-1" id="type">
+                        <option th:each="type : ${types}" th:value="${type.id}"
+                                th:text="${type.name}"
+                                th:selected="${type.id == order?.type?.id}"></option>
+                    </select>
+                </div>
+                <div class="col-xs-2 col-md-2">
+                    <a th:href="@{/type/create}" target="_blank" type="button"
+                       class="btn btn-xs btn-primary mt-2 form-control">Новый тип</a>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <label class="m-1" for="status">Статус заказа</label>
+            <div class="row">
+                <div class="col-xs-10 col-md-10 mt-1">
+                    <select th:field="${order.status}" class="form-control m-1" id="status">
+                        <option th:each="status : ${statuses}" th:value="${status.id}"
+                                th:text="${status.name}"
+                                th:selected="${status.id == order?.status?.id}"></option>
+                    </select>
+                </div>
+                <div class="col-xs-2 col-md-2">
+                    <a th:href="@{/status/create}" target="_blank" type="button"
+                       class="btn btn-xs btn-primary mt-2 form-control">Новый статус</a>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
             <label class="m-1" for="comment">Комментарий</label>
             <div class="row">
                 <div class="col-xs-12 col-md-12 mt-1">
