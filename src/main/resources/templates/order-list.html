@@ -37,8 +37,8 @@
         <tr style="text-align: center" th:each="order: ${order}">
             <td th:text="${order.id}"/>
             <td th:text="${#temporals.format(order.createdAt, 'dd.MM.yyyy HH:mm')}"/>
-            <td th:text="${order.client.telephone}"/>
-            <td th:text="${order.game.name}"/>
+            <td th:text="${order.client?.telephone}"/>
+            <td th:text="${order.game?.name}"/>
             <td th:text="${order.comment}"/>
             <td th:text="${#numbers.formatCurrency(order.price)}"/>
             <td th:text="${order.amount}"/>
