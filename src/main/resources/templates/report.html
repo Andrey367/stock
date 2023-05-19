@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчёты</title>
+</head>
+<body>
+<div style="height: 400px;">
+    <canvas id="sales-by-genre"></canvas>
+</div>
+<div style="height: 400px;">
+    <canvas id="sales-by-month"></canvas>
+</div>
+<script th:src="@{https://code.jquery.com/jquery-3.7.0.min.js}" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/chart.js}"></script>
+<script th:src="@{/js/charts.js}"></script>
+</body>
+</html>
