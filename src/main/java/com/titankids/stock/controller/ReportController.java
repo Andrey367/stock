@@ -1,7 +1,9 @@
 package com.titankids.stock.controller;
 
+import com.titankids.stock.model.report.BuySalesReport;
 import com.titankids.stock.model.report.SalesByGenre;
 import com.titankids.stock.model.report.SalesByMonth;
+import com.titankids.stock.repository.BuySalesRepository;
 import com.titankids.stock.repository.SalesByGenreRepository;
 import com.titankids.stock.repository.SalesByMonthRepository;
 import lombok.AccessLevel;
@@ -21,6 +23,7 @@ public class ReportController {
 
     SalesByGenreRepository salesByGenreRepository;
     SalesByMonthRepository salesByMonthRepository;
+    BuySalesRepository buySalesRepository;
 
     @PostMapping("/sales-by-genre")
     public List<SalesByGenre> getSalesByGenre() {
@@ -30,6 +33,11 @@ public class ReportController {
     @PostMapping("/sales-by-month")
     public List<SalesByMonth> getSalesByMonth() {
         return salesByMonthRepository.findAll();
+    }
+
+    @PostMapping("/buy-sales-report")
+    public List<BuySalesReport> getBuySalesReport() {
+        return buySalesRepository.findAll();
     }
 
 }

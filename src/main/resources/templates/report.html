@@ -9,7 +9,8 @@
 
     <title>Отчёты</title>
 </head>
-<body>
+<body style="padding-top: 70px">
+<div th:replace="~{fragments/header.html :: #header}"></div>
 <div class="row d-flex justify-content-center flex-nowrap">
     <div class="w-25 mx-auto">
         <canvas id="sales-by-genre"></canvas>
@@ -18,7 +19,11 @@
         <canvas id="sales-by-month"></canvas>
     </div>
 </div>
-
+<div class="row d-flex justify-content-center flex-nowrap">
+    <div class="w-50 mx-auto">
+        <canvas id="buy-sales-report"></canvas>
+    </div>
+</div>
 <script th:src="@{https://code.jquery.com/jquery-3.7.0.min.js}"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script th:src="@{https://cdn.jsdelivr.net/npm/chart.js}"></script>
