@@ -1,4 +1,4 @@
-drop view buy_sales_report;
+drop view if exists buy_sales_report;
 create view buy_sales_report as
 
 select row_number() over (order by month) id, month, sum(t.buys) buy, sum(t.sales) sale from

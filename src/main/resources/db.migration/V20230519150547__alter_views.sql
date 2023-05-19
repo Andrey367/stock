@@ -1,4 +1,4 @@
-drop view sales_by_month;
+drop view if exists sales_by_month;
 create view sales_by_month as
 SELECT row_number() OVER (ORDER BY s.month) AS id,
        s.month,
@@ -10,7 +10,7 @@ FROM (SELECT sum(o.price * o.amount::double precision) AS sales,
       GROUP BY o.created_at) s
 GROUP BY s.month;
 
-drop view sales_by_genre;
+drop view  if exists sales_by_genre;
 create view sales_by_genre as
 SELECT row_number() OVER (ORDER BY g2.name)      AS id,
        g2.name                                   AS genre,
