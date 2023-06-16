@@ -1,0 +1,42 @@
+/* Класс для таблицы сортировки */
+.table_sort {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Стиль для заголовков столбцов */
+.table_sort th {
+  background-color: #f2f2f2;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Стиль для каждой четной строки */
+.table_sort tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Стиль для каждой нечетной строки */
+.table_sort tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Стиль для ячеек таблицы */
+.table_sort td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Стиль для активной колонки */
+.table_sort th.sorting_asc {
+  background: #4CAF50;
+  color: white;
+}
+
+/* Стиль для выделенной колонки */
+.table_sort th.sorting_desc {
+  background: #4CAF50;
+  color: white;
+}
