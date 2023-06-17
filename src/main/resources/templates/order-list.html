@@ -40,7 +40,8 @@
     <div class="container">
         <h1 class="text-center mb-4">Заказы</h1>
     </div>
-
+    <input type="text" id="search-box" onkeyup="searchInPage(event)" placeholder="Search...">
+    <button onclick="searchInPage()">Поиск</button>
     <a style="float: right" th:href="@{/order/create}" type="button" class="btn btn-success m-1 float-md-right">Создать заказ</a>
     <table class = "table_sort">
         <style>/* Класс для таблицы сортировки */

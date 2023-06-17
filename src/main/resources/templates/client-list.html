@@ -12,6 +12,59 @@
 
 <body style="padding-top: 40px">
 <script>
+let initialContent = "";
+
+function searchInPage(event) {
+  if (event.keyCode === 27) {
+    // Обновить страницу до исходного состояния при нажатии Esc
+    document.getElementsByTagName("body")[0].innerHTML = initialContent;
+    return;
+  } else if (event.keyCode !== 13) {
+    // Игнорировать все нажатия клавиши, кроме Enter и Esc
+    return;
+  }
+
+  let input = document.getElementById("search-box");
+  let filter = input.value.toUpperCase();
+  let content = document.getElementsByTagName("body")[0].innerHTML;
+
+  if (!initialContent) {
+    // Сохранить исходное состояние страницы, если оно еще не сохранено
+    initialContent = content;
+  }
+
+  let matches = content.match(new RegExp(filter, "g"));
+
+  if (filter && matches !== null) {
+    // Получить все строки таблицы и пройтись по ним в цикле
+    let tableRows = document.getElementsByTagName("tr");
+    for (let i = 0; i < tableRows.length; i++) {
+      let tableData = tableRows[i].getElementsByTagName("td");
+      let id = tableData[0].innerText.toUpperCase();
+      let name = tableData[1].innerText.toUpperCase();
+      let telephone = tableData[2].innerText.toUpperCase();
+      let email = tableData[3].innerText.toUpperCase();
+      //Добавить еще столбцы (адрес, город, почтовый индекс и т.д.)
+      if (id.indexOf(filter) > -1
+          || name.indexOf(filter) > -1
+          || telephone.indexOf(filter) > -1
+          || email.indexOf(filter) > -1) {
+        tableRows[i].style.display = "";
+      } else {
+        tableRows[i].style.display = "none";
+      }
+    }
+    if (window.find && matches.length === 1) {
+      // Если найдено только одно совпадение, использовать встроенную функцию поиска браузера
+      let searchResult = window.find(filter);
+      if (!searchResult) {
+        alert("Текст не найден!");
+      }
+    }
+  }
+}
+</script>
+<script>
    document.addEventListener('DOMContentLoaded', () => {
 
     const getSort = ({ target }) => {
@@ -38,8 +91,10 @@
 <div th:replace="~{fragments/header.html :: #header}"></div>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Клиенты</h1>
+    <input type="text" id="search-box" onkeyup="searchInPage(event)" placeholder="Search...">
+    <button onclick="searchInPage()">Поиск</button>
     <a style="float: right" href="/client/create" type="button" class="btn btn-success m-1 float-md-right">Добавить клиента</a>
-    <table class = "table_sort">
+    <table class="table_sort">
         <style>/* Класс для таблицы сортировки */
 .table_sort {
   font-family: Arial, sans-serif;

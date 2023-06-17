@@ -12,6 +12,66 @@
 </head>
 
 <body style="padding-top: 40px">
+
+<script>
+let initialContent = "";
+
+function searchInPage(event) {
+  if (event.keyCode === 27) {
+    // Обновить страницу до исходного состояния при нажатии Esc
+    document.getElementsByTagName("body")[0].innerHTML = initialContent;
+    return;
+  } else if (event.keyCode !== 13) {
+    // Игнорировать все нажатия клавиши, кроме Enter и Esc
+    return;
+  }
+
+  let input = document.getElementById("search-box");
+  let filter = input.value.toUpperCase();
+  let content = document.getElementsByTagName("body")[0].innerHTML;
+
+  if (!initialContent) {
+    // Сохранить исходное состояние страницы, если оно еще не сохранено
+    initialContent = content;
+  }
+
+  let matches = content.match(new RegExp(filter, "g"));
+
+  if (filter && matches !== null) {
+    // Получить все строки таблицы и пройтись по ним в цикле
+    let tableRows = document.getElementsByTagName("tr");
+    for (let i = 0; i < tableRows.length; i++) {
+      let tableData = tableRows[i].getElementsByTagName("td");
+      let id = tableData[0].innerText.toUpperCase();
+      let name = tableData[1].innerText.toUpperCase();
+      let genre = tableData[2].innerText.toUpperCase();
+      let description = tableData[3].innerText.toUpperCase();
+      let price = tableData[4].innerText.toUpperCase();
+      let changeable = tableData[5].innerText.toUpperCase();
+      let changePrice = tableData[6].innerText.toUpperCase();
+      //Добавить еще столбцы (жанр, описание, цена продажи и т.д.)
+      if (id.indexOf(filter) > -1
+          || name.indexOf(filter) > -1
+          || genre.indexOf(filter) > -1
+          || description.indexOf(filter) > -1
+          || price.indexOf(filter) > -1
+          || changeable.indexOf(filter) > -1
+          || changePrice.indexOf(filter) > -1) {
+        tableRows[i].style.display = "";
+      } else {
+        tableRows[i].style.display = "none";
+      }
+    }
+    if (window.find && matches.length === 1) {
+      // Если найдено только одно совпадение, использовать встроенную функцию поиска браузера
+      let searchResult = window.find(filter);
+      if (!searchResult) {
+        alert("Текст не найден!");
+      }
+    }
+  }
+}
+</script>
 <script>
    document.addEventListener('DOMContentLoaded', () => {
 
@@ -38,6 +98,8 @@
 <div th:replace="~{fragments/header.html :: #header}"></div>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Игры</h1>
+    <input type="text" id="search-box" onkeyup="searchInPage(event)" placeholder="Search...">
+    <button onclick="searchInPage()">Поиск</button>
     <a style="float: right" href="/game/create" type="button" class="btn btn-success m-1 float-md-right">Добавить игру</a>
     <table class = "table_sort">
         <style>/* Класс для таблицы сортировки */
