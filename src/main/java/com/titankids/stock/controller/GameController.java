@@ -3,16 +3,16 @@ package com.titankids.stock.controller;
 
 import com.titankids.stock.model.Game;
 import com.titankids.stock.model.Genre;
-import com.titankids.stock.model.Order;
 import com.titankids.stock.repository.GameRepository;
 import com.titankids.stock.repository.GenreRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/game")
@@ -23,8 +23,13 @@ public class GameController {
     private final GenreRepository genreRepository;
 
     @GetMapping(path = "/list")
-    public String getAllGames(Model model) {
-        addAttributes(model, gameRepository.findAll());
+    public String getAllGames(Model model, @Param("keyword") String keyword) {
+        if (Objects.nonNull(keyword) && !keyword.isEmpty()) {
+            addAttributes(model, "games", gameRepository.filterBy(keyword.toLowerCase()));
+            addAttributes(model, "keyword", keyword);
+        } else {
+            addAttributes(model, gameRepository.findAll());
+        }
         return "game-list";
     }
 
@@ -55,6 +60,10 @@ public class GameController {
 
     private void addAttributes(Model model, List<Game> games) {
         model.addAttribute("games", games);
+    }
+
+    private void addAttributes(Model model, String attributeName, Object attribute) {
+        model.addAttribute(attributeName, attribute);
     }
 
     @ModelAttribute("genres")
