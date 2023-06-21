@@ -4,12 +4,13 @@ package com.titankids.stock.controller;
 import com.titankids.stock.model.*;
 import com.titankids.stock.repository.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,8 +24,15 @@ public class OrderController {
     private final OrderStatusRepository orderStatusRepository;
 
     @GetMapping(path = "/list")
-    public String getAllOrder(Model model) {
+    public String getAllOrder(Model model, @Param("keyword") String keyword) {
         addAttributes(model, orderRepository.findAllOrderByCreatedAt());
+        if (Objects.nonNull(keyword) && !keyword.isEmpty()) {
+            addAttributes(model, "order", orderRepository.filterBy(keyword));
+            addAttributes(model, "keyword", keyword);
+        } else {
+            addAttributes(model, orderRepository.findAll());
+            addAttributes(model, "keyword", keyword);
+        }
         return "order-list";
     }
 
@@ -57,6 +65,9 @@ public class OrderController {
         model.addAttribute("order", order);
     }
 
+    private void addAttributes(Model model, String attributeName, Object attribute) {
+        model.addAttribute(attributeName, attribute);
+    }
     @ModelAttribute("games")
     public List<Game> initializeGames() {
         return gameRepository.findAll();

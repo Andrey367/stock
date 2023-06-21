@@ -7,10 +7,16 @@
     <!-- Подлючение стилей Bootstrap -->
     <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{/css/table-style.css}" rel="stylesheet">
     <title>Заказы</title>
 </head>
 
 <body style="padding-top: 40px">
+<script>
+    function clearSearch() {
+        window.location = "[[@{/order/list}]]";
+    }
+</script>
 <script>
    document.addEventListener('DOMContentLoaded', () => {
 
@@ -40,53 +46,15 @@
     <div class="container">
         <h1 class="text-center mb-4">Заказы</h1>
     </div>
-    <input type="text" id="search-box" onkeyup="searchInPage(event)" placeholder="Search...">
-    <button onclick="searchInPage()">Поиск</button>
+    <form th:action="@{/order/list}">
+        Фильтр: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+        &nbsp;
+        <input type="submit" value="Поиск" />
+        &nbsp;
+        <input type="button" value="Сбросить" id="btn-clear" onclick="clearSearch()" />
+    </form>
     <a style="float: right" th:href="@{/order/create}" type="button" class="btn btn-success m-1 float-md-right">Создать заказ</a>
-    <table class = "table_sort">
-        <style>/* Класс для таблицы сортировки */
-.table_sort {
-  font-family: Arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-/* Стиль для заголовков столбцов */
-.table_sort th {
-  background-color: #A9A9A9;
-  color: #A9A9A9;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Стиль для каждой четной строки */
-.table_sort tr:nth-child(even) {
-  background-color: #A9A9A9;
-}
-
-/* Стиль для каждой нечетной строки */
-.table_sort tr:nth-child(odd) {
-  background-color: #ffffff;
-}
-
-/* Стиль для ячеек таблицы */
-.table_sort td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-/* Стиль для активной колонки */
-.table_sort th.sorting_asc {
-  background: #4CAF50;
-  color: white;
-}
-
-/* Стиль для выделенной колонки */
-.table_sort th.sorting_desc {
-  background: #4CAF50;
-  color: white;
-}
-</style>
+    <table class = "table_sort" id="orders">
         <thead style="font-weight: bold">
         <tr style="text-align: center">
             <td>Номер</td>
