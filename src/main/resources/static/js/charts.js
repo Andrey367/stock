@@ -82,12 +82,17 @@ function generateReportSalesByGenre(salesByGenre) {
 }
 
 function getSalesByGenre() {
+    let token = $("meta[name='_csrf']").attr("content");
+    let header = $("meta[name='_csrf_header']").attr("content");
 
     $.ajax({
         type: "POST",
         contentType: "application/json;charset=utf-8",
         url: "report/sales-by-genre",
         timeout: 100000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader(header, token);
+        }
     })
         .done(function (data) {
             generateReportSalesByGenre(data);
@@ -137,12 +142,17 @@ function generateReportSalesByMonth(salesByMonth) {
 }
 
 function getSalesByMonth() {
+    let token = $("meta[name='_csrf']").attr("content");
+    let header = $("meta[name='_csrf_header']").attr("content");
 
     $.ajax({
         type: "POST",
         contentType: "application/json;charset=utf-8",
         url: "report/sales-by-month",
         timeout: 100000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader(header, token);
+        }
     })
         .done(function (data) {
             generateReportSalesByMonth(data);
@@ -210,12 +220,17 @@ function generateBuySalesReport(buySaleReport) {
 }
 
 function getBuySalesReport() {
+    let token = $("meta[name='_csrf']").attr("content");
+    let header = $("meta[name='_csrf_header']").attr("content");
 
     $.ajax({
         type: "POST",
         contentType: "application/json;charset=utf-8",
         url: "report/buy-sales-report",
         timeout: 100000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader(header, token);
+        }
     })
         .done(function (data) {
             generateBuySalesReport(data);
